@@ -10974,20 +10974,20 @@
                     var item = levelData.items[i];
                     var div = document.createElement("div");
                     div.className = "outlineItem";
-                    div.onclick = function () {
-                      var hash = window.location.hash;
-                      document
-                        .getElementsByClassName("outlineItem")
-                        .forEach(function (element) {
-                          // if href is equal to hash add another class
-                          if (element.href === hash) {
-                            element.className =
-                              "outlineItem bookmark-highlight";
-                          } else {
-                            // set class as outlineItem
-                            element.className = "outlineItem";
-                          }
-                        });
+                    div.onclick = function (evt) {
+                      var hash = evt.target.hash;
+                      let ite = document.getElementsByClassName("outlineItem");
+
+                      // for..of ite
+                      for (let ele of ite) {
+                        // if href is equal to hash add another class
+                        if (ele.firstChild.hash === hash) {
+                          ele.className = "outlineItem bookmark-highlight";
+                        } else {
+                          // set class as outlineItem
+                          ele.className = "outlineItem";
+                        }
+                      }
                     };
                     var element = document.createElement("a");
 
